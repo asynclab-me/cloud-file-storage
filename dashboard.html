@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard - Cloud Storage</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <header class="navbar">
+
+        <div class="container navbar-content">
+
+            <a
+                href="dashboard.html"
+                class="brand"
+            >
+                Cloud Storage
+            </a>
+
+
+            <button
+                id="logoutBtn"
+                class="btn btn-outline"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main class="dashboard">
+
+        <div class="container">
+
+            <section class="dashboard-header">
+
+                <div>
+
+                    <span class="badge">
+                        My Cloud
+                    </span>
+
+                    <h1>
+                        File Saya
+                    </h1>
+
+                    <p>
+                        Simpan dan kelola file kamu.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <section class="upload-section">
+
+                <div class="upload-card">
+
+                    <div class="upload-icon">
+                        ↑
+                    </div>
+
+
+                    <h2>
+                        Upload File
+                    </h2>
+
+
+                    <section class="upload-section">
+                    
+                        <div class="upload-card">
+                    
+                            <div class="upload-icon">
+                                ↑
+                            </div>
+                    
+                    
+                            <h2>
+                                Upload File
+                            </h2>
+                    
+                    
+                            <p>
+                                Pilih file dari perangkat kamu.
+                            </p>
+                    
+                    
+                            <p class="upload-hint">
+                                Maksimal 10 MB
+                                •
+                                PDF, JPG, PNG, WEBP, DOCX, XLSX, ZIP, dan lainnya
+                            </p>
+                    
+                    
+                            <input
+                                type="file"
+                                id="fileInput"
+                                hidden
+                            >
+                    
+                    
+                            <label
+                                for="fileInput"
+                                class="btn btn-primary"
+                            >
+                                Pilih File
+                            </label>
+                    
+                    
+                            <p
+                                id="uploadStatus"
+                                class="upload-status"
+                                role="status"
+                            ></p>
+                    
+                        </div>
+                    
+                    </section>
+                    
+
+                    <input
+                        type="file"
+                        id="fileInput"
+                        hidden
+                    >
+
+
+                    <label
+                        for="fileInput"
+                        class="btn btn-primary"
+                    >
+                        Pilih File
+                    </label>
+
+
+                    <p
+                        id="uploadStatus"
+                        class="upload-status"
+                    ></p>
+
+                </div>
+
+            </section>
+
+
+            <section class="files-section">
+
+                <div class="files-header">
+
+                    <h2>
+                        File Saya
+                    </h2>
+
+                    <button
+                        id="refreshBtn"
+                        class="btn btn-outline"
+                    >
+                        Refresh
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="fileList"
+                    class="file-list"
+                >
+
+                    <div class="empty-state">
+                        Memuat file...
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="js/config.js"></script>
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/storage.js"></script>
+
+    <script src="js/files.js"></script>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
