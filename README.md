@@ -45,57 +45,17 @@
 ## 📂 Struktur Project
 
 ```text
-cloud-file-storage/
-├── css/
-│   └── style.css          # Styling global, animasi UI, dan aturan responsif
-├── js/
-│   ├── config.js          # Inisialisasi koneksi Supabase Client
-│   ├── auth.js            # Logika register, login, logout, dan proteksi sesi
-│   ├── storage.js         # Validasi file, upload, signed URL, dan hapus storage
-│   ├── files.js           # Operasi CRUD metadata file ke database PostgreSQL
-│   └── app.js             # Kontroler utama antarmuka dan event dashboard
-├── index.html             # Halaman utama (Landing Page)
-├── login.html             # Halaman masuk pengguna
-├── register.html          # Halaman pendaftaran akun baru
-├── dashboard.html         # Halaman manajemen file pengguna
-└── README.md              # Dokumentasi project
-
-⚙️ Konfigurasi Supabase
-Untuk menjalankan project ini dengan instance Supabase milikmu sendiri, siapkan tabel database dan storage bucket berikut:
-1. Buat Tabel files di SQL Editor
-create table public.files (
-  id uuid not null default gen_random_uuid(),
-  user_id uuid not null references auth.users(id) on delete cascade,
-  file_name text not null,
-  storage_path text not null,
-  file_size bigint not null,
-  mime_type text null,
-  created_at timestamp with time zone not null default now(),
-  constraint files_pkey primary key (id)
-);
-
-alter table public.files enable row level security;
-
-2. Buat Storage Bucket
- * Buka menu Storage di dashboard Supabase.
- * Buat bucket baru bernama files (set sebagai Private).
- * Atur RLS Policies pada tabel files dan bucket files agar setiap pengguna hanya dapat mengakses data miliknya sendiri (auth.uid() = user_id).
-🚀 Cara Menjalankan Secara Lokal
- * Clone repository ini
-   git clone [https://github.com/asynclab-me/cloud-file-storage.git](https://github.com/asynclab-me/cloud-file-storage.git)
-cd cloud-file-storage
-
- * Sesuaikan konfigurasi Supabase
-   Buka file js/config.js dan masukkan Project URL serta Publishable / Anon Key milikmu:
-   const SUPABASE_URL = "[https://your-project-id.supabase.co](https://your-project-id.supabase.co)";
-const SUPABASE_ANON_KEY = "your-publishable-key";
-
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_ANON_KEY
-);
-
- * Jalankan di Browser
-   Buka index.html menggunakan ekstensi Live Server di VS Code atau web server lokal pilihanmu.
-👨‍💻 Author
-Dikembangkan oleh asynclab-me
+📦 cloud-file-storage
+┣━ 📂 css
+┃  ┗━ 🎨 style.css — Desain glassmorphism, animasi UI, & tata letak responsif
+┣━ 📂 js
+┃  ┣━ ⚙️ config.js — Konfigurasi & inisialisasi koneksi Supabase Client
+┃  ┣━ 🔐 auth.js — Sistem register, login, logout, & proteksi sesi
+┃  ┣━ ☁️ storage.js — Validasi file, upload, signed URL, & hapus storage
+┃  ┣━ 🗄️ files.js — Operasi CRUD metadata file ke database PostgreSQL
+┃  ┗━ 🎛️ app.js — Kontroler utama antarmuka & interaksi dashboard
+┣━ 🏠 index.html — Halaman utama (Landing Page)
+┣━ 🔑 login.html — Halaman masuk pengguna
+┣━ 📝 register.html — Halaman pendaftaran akun baru
+┣━ 📊 dashboard.html — Halaman utama manajemen file pengguna
+┗━ 📘 README.md — Dokumentasi lengkap project
