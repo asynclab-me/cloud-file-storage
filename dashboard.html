@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Cloud Storage</title>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("theme");
+            const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+            document.documentElement.setAttribute("data-theme", savedTheme || (prefersDark ? "dark" : "light"));
+        })();
+    </script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header class="navbar">
         <div class="container navbar-content">
             <a href="dashboard.html" class="brand">Cloud Storage</a>
-            <button id="logoutBtn" class="btn btn-outline">Logout</button>
+            <nav>
+                <button type="button" id="themeToggle" class="btn btn-outline theme-toggle" aria-label="Ubah ke mode gelap" title="Mode Gelap">🌙</button>
+                <button id="logoutBtn" class="btn btn-outline">Logout</button>
+            </nav>
         </div>
     </header>
     <main class="dashboard">
