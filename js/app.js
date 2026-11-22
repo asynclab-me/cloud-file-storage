@@ -2,6 +2,41 @@ const fileInput = document.getElementById("fileInput");
 const uploadStatus = document.getElementById("uploadStatus");
 const fileList = document.getElementById("fileList");
 const refreshBtn = document.getElementById("refreshBtn");
+const themeToggle = document.getElementById("themeToggle");
+
+const THEME_STORAGE_KEY = "theme";
+
+function getPreferredTheme() {
+    const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    if (savedTheme === "dark" || savedTheme === "light") {
+        return savedTheme;
+    }
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return prefersDark ? "dark" : "light";
+}
+
+function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    if (themeToggle) {
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "☀️" : "🌙";
+        themeToggle.setAttribute("aria-label", isDark ? "Ubah ke mode terang" : "Ubah ke mode gelap");
+        themeToggle.setAttribute("title", isDark ? "Mode Terang" : "Mode Gelap");
+    }
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    const nextTheme = currentTheme === "dark" ? "light" : "dark";
+    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+    applyTheme(nextTheme);
+}
+
+applyTheme(getPreferredTheme());
+
+if (themeToggle) {
+    themeToggle.addEventListener("click", toggleTheme);
+}
 
 let currentUser = null;
 
